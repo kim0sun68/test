@@ -1,0 +1,31 @@
+mycook/
+
+drop table CK_REVIEW;
+drop SEQUENCE CK_REVIEW_seq;
+
+create table CK_REVIEW(
+IDX_SQ number(10) not null primary key,
+ITEM_CD VARCHAR2(50) not null,
+write_NM varchar2(100) not null,
+GRADE number(2) not null,
+CONT varchar2(4000) not null,
+TIPS varchar2(3000),
+BEST_YN char(1) default 'N' check(BEST_YN IN('Y','N')),
+IMGURL varchar2(100),
+REG_DT date default sysdate not null,
+UPD_DT date default sysdate
+);
+
+create SEQUENCE CK_REVIEW_seq;
+
+commit;
+
+
+insert into CK_REVIEW(IDX_SQ,ITEM_CD,write_NM,GRADE,CONT,TIPS,BEST_YN,IMGURL)
+values(CK_REVIEW_seq.nextval,'ck001','lee',5,'good','wow~~','Y','jpg');
+
+SELECT
+    *
+FROM ck_review;
+
+COMMIT;
